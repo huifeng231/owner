@@ -220,7 +220,8 @@
         曜日選択
 
          <label style="margin-left: 30px">週
-          <input type="checkbox" name="week" id="week-checkbox">
+         <input type="radio" name="selection" id="week-checkbox" onClick="uncheckDailyCheckbox()">
+
           <span class="checkbox-icon"></span>
         </label>
 
@@ -258,7 +259,7 @@
 
         </label>
              <label style="margin-left: 83px">每日
-          <input type="checkbox" name="daily" id="daily-checkbox">
+        <input type="radio" name="selection" id="daily-checkbox" onClick="uncheckWeekCheckbox()">
           <span class="checkbox-icon"></span>
         </label>
 
@@ -267,7 +268,7 @@
 </div>
 
   <script>
-    // 获取每日复选框和工作日复选框
+
     const dailyCheckbox = document.getElementById('daily-checkbox');
     const weekCheckbox = document.getElementById('week-checkbox');
 
@@ -277,7 +278,7 @@
     dailyCheckbox.addEventListener('change', function() {
       // 如果每日复选框被选中
       if (dailyCheckbox.checked) {
-        weekCheckbox.checked=false
+          weekCheckbox.checked=false;
 
         // 更新所有工作日复选框为未选中状态
         weekdaysCheckboxes.forEach(function(checkbox) {
@@ -292,6 +293,7 @@
         // 如果有工作日复选框被选中，则取消每日复选框的选中状态
         if (this.checked) {
           dailyCheckbox.checked = false;
+          weekCheckbox.checked = true
         }
       });
     });
@@ -306,7 +308,9 @@
   });
 
 
+
   </script>
+
 
 </body>
 </html>
